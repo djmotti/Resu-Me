@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html dir="rtl" lang="he">
-<head>
+<head><meta content="Resu-Me - מערכת לניהול חיפוש עבודה" property="og:title"/><meta content="המערכת החכמה והמהירה ביותר לניהול תהליך חיפוש העבודה שלך" property="og:description"/><meta content="https://djmotti.github.io/Resu-Me/splash.png" property="og:image"/><meta content="website" property="og:type"/><meta content="https://djmotti.github.io/Resu-Me" property="og:url"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://djmotti.github.io/Resu-Me/splash.png" name="twitter:image"/><meta content="Resu-Me | מערכת חכמה לניהול תהליך קבלה לעבודה" name="twitter:title"/><meta content="ניהול קורות חיים, הגשות ותזכורות במקום אחד חכם ונגיש." name="twitter:description"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Resu-Me | מערכת מתקדמת לניהול חיפוש עבודה</title>
@@ -239,8 +239,22 @@
     display: block;
 }
 </style>
+
+<!-- Accessible Menu (example) -->
+<link href="https://unpkg.com/a11y-menu@latest/dist/a11y-menu.min.css" rel="stylesheet"/>
+<script defer="" src="https://unpkg.com/a11y-menu@latest/dist/a11y-menu.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new A11yMenu({
+      id: 'a11y-menu',
+      position: 'right',
+      triggerLabel: 'תפריט נגישות',
+      mainContentId: 'main',
+    });
+  });
+</script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800"><div id="a11y-menu"></div>
 <!-- Decorative Blobs -->
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
