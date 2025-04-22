@@ -581,13 +581,13 @@ document.getElementById("contactForm").addEventListener("submit", async function
 <p class="text-gray-400 mt-2">המערכת המתקדמת לניהול חיפוש עבודה</p>
 </div>
 <div class="flex space-x-6">
-<a class="text-gray-400 hover:text-white transition" href="#">
+<a class="text-gray-400 hover:text-white transition mx-2" href="#">
 <i class="fab fa-github text-xl"></i>
 </a>
-<a class="text-gray-400 hover:text-white transition" href="#">
+<a class="text-gray-400 hover:text-white transition mx-2" href="#">
 <i class="fab fa-twitter text-xl"></i>
 </a>
-<a class="text-gray-400 hover:text-white transition" href="https://www.linkedin.com/in/moti-kalimi">
+<a class="text-gray-400 hover:text-white transition mx-2" href="https://www.linkedin.com/in/moti-kalimi">
 <i class="fab fa-linkedin text-xl"></i>
 </a>
 </div>
@@ -595,9 +595,9 @@ document.getElementById("contactForm").addEventListener("submit", async function
 <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
 <p class="text-gray-400 text-sm">© 2025 Resu-Me. כל הזכויות שמורות.</p>
 <div class="flex space-x-4 mt-4 md:mt-0">
-<a class="text-gray-400 hover:text-white text-sm transition mx-2" href="privacy.html">מדיניות פרטיות</a>
-<a class="text-gray-400 hover:text-white text-sm transition mx-2" href="E:/My Projects/resu-me/דף נחיתה מעוצב/terms.html" style="margin-right: 1rem;">תנאי שימוש</a>
-<a class="text-gray-400 hover:text-white text-sm transition mx-2" href="E:/My Projects/resu-me/דף נחיתה מעוצב/contact.html">צור קשר</a>
+<a class="text-gray-400 hover:text-white text-sm transition mx-2 mx-2" href="privacy.html">מדיניות פרטיות</a>
+<a class="text-gray-400 hover:text-white text-sm transition mx-2 mx-2" href="E:/My Projects/resu-me/דף נחיתה מעוצב/terms.html" style="margin-right: 1rem;">תנאי שימוש</a>
+<a class="text-gray-400 hover:text-white text-sm transition mx-2 mx-2" href="E:/My Projects/resu-me/דף נחיתה מעוצב/contact.html">צור קשר</a>
 </div>
 </div>
 </div>
@@ -653,80 +653,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
         showImage(0);
     });
 </script>
-
-<style>
-#accessibility-toggle {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 9999;
-  background-color: #4F46E5;
-  color: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: 9999px;
-  font-weight: bold;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
-.accessibility-panel {
-  position: fixed;
-  bottom: 4rem;
-  left: 1rem;
-  z-index: 9998;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 1rem;
-  display: none;
-  width: 220px;
-}
-</style>
-<button id="accessibility-toggle">🦮 נגישות</button>
-
-<style>
-.accessibility-panel label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.underline-links a {
-  text-decoration: underline !important;
-}
-.grayscale {
-  filter: grayscale(1) !important;
-}
-</style>
-<div class="accessibility-panel" id="accessibility-panel">
-<label><input id="high-contrast-toggle" type="checkbox"/> ניגודיות גבוהה</label>
-<label><input id="large-text-toggle" type="checkbox"/> טקסט גדול יותר</label>
-<label><input id="underline-links-toggle" type="checkbox"/> קישורים עם קו תחתון</label>
-<label><input id="grayscale-toggle" type="checkbox"/> גווני אפור</label>
-<button id="reset-accessibility" style="margin-top:10px;width:100%;background:#eee;border:none;padding:5px 10px;border-radius:8px;">איפוס</button>
-</div>
-<script>
-document.getElementById("accessibility-toggle").addEventListener("click", function () {
-  const panel = document.getElementById("accessibility-panel");
-  panel.style.display = panel.style.display === "block" ? "none" : "block";
-});
-document.getElementById("high-contrast-toggle").addEventListener("change", function () {
-  document.body.classList.toggle("high-contrast", this.checked);
-});
-document.getElementById("large-text-toggle").addEventListener("change", function () {
-  document.body.classList.toggle("large-text", this.checked);
-});
-document.getElementById("underline-links-toggle").addEventListener("change", function () {
-  document.body.classList.toggle("underline-links", this.checked);
-});
-document.getElementById("grayscale-toggle").addEventListener("change", function () {
-  document.body.classList.toggle("grayscale", this.checked);
-});
-document.getElementById("reset-accessibility").addEventListener("click", function () {
-  document.body.classList.remove("high-contrast", "large-text", "underline-links", "grayscale");
-  document.querySelectorAll("#accessibility-panel input[type='checkbox']").forEach(el => el.checked = false);
-});
-</script>
-
+<!-- Accessible UI Component Start -->
 <style>
 #accessibility-toggle {
   position: fixed;
@@ -773,16 +700,14 @@ document.getElementById("reset-accessibility").addEventListener("click", functio
   filter: grayscale(1) !important;
 }
 </style>
-
-<button id="accessibility-toggle" aria-label="פתיחת תפריט נגישות">🦮 נגישות</button>
-<div id="accessibility-panel" class="accessibility-panel" role="region" aria-label="תפריט נגישות">
-  <label><input type="checkbox" id="high-contrast-toggle" /> ניגודיות גבוהה</label>
-  <label><input type="checkbox" id="large-text-toggle" /> טקסט גדול יותר</label>
-  <label><input type="checkbox" id="underline-links-toggle" /> קישורים עם קו תחתון</label>
-  <label><input type="checkbox" id="grayscale-toggle" /> גווני אפור</label>
-  <button id="reset-accessibility" style="margin-top:10px;width:100%;background:#eee;border:none;padding:5px 10px;border-radius:8px;">איפוס</button>
+<button aria-label="פתיחת תפריט נגישות" id="accessibility-toggle">🦮 נגישות</button>
+<div aria-label="תפריט נגישות" class="accessibility-panel" id="accessibility-panel" role="region">
+<label><input id="high-contrast-toggle" type="checkbox"/> ניגודיות גבוהה</label>
+<label><input id="large-text-toggle" type="checkbox"/> טקסט גדול יותר</label>
+<label><input id="underline-links-toggle" type="checkbox"/> קישורים עם קו תחתון</label>
+<label><input id="grayscale-toggle" type="checkbox"/> גווני אפור</label>
+<button id="reset-accessibility" style="margin-top:10px;width:100%;background:#eee;border:none;padding:5px 10px;border-radius:8px;">איפוס</button>
 </div>
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const toggle = document.getElementById("accessibility-toggle");
@@ -814,5 +739,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-</style>
-</body></html>
+<!-- Accessible UI Component End -->
+
+</body>
+</html>
