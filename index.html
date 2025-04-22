@@ -239,35 +239,6 @@
     display: block;
 }
 </style>
-
-<style>
-@media screen and (max-width: 640px) {
-  .feature-card {
-    padding: 1rem !important;
-    text-align: center;
-  }
-  .download-btn {
-    width: 100% !important;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .screenshot-tabs {
-    flex-wrap: wrap !important;
-    gap: 0.5rem;
-    justify-content: center;
-  }
-  .flex.justify-between {
-    flex-direction: column !important;
-    gap: 1rem;
-  }
-  footer .flex {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 1rem;
-  }
-}
-</style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 <!-- Decorative Blobs -->
@@ -690,86 +661,61 @@ document.getElementById("contactForm").addEventListener("submit", async function
     }
   });
 </script>
-
-<style>
-#accessibility-toggle {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 9999;
-  background-color: #4F46E5;
-  color: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: 9999px;
-  font-weight: bold;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
-.accessibility-panel {
-  position: fixed;
-  bottom: 4rem;
-  left: 1rem;
-  z-index: 9998;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 1rem;
-  display: none;
-  width: 240px;
-  font-size: 14px;
-}
-.accessibility-panel label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.high-contrast {
-  filter: contrast(1.5) brightness(1.2);
-}
-.large-text * {
-  font-size: 1.15em !important;
-}
-.underline-links a {
-  text-decoration: underline !important;
-}
-.grayscale {
-  filter: grayscale(1) !important;
-}
-</style>
-<button aria-label="פתיחת תפריט נגישות" id="accessibility-toggle">🦮 נגישות</button>
-<div aria-label="תפריט נגישות" class="accessibility-panel" id="accessibility-panel" role="region">
-<label><input id="high-contrast-toggle" type="checkbox"/> ניגודיות גבוהה</label>
-<label><input id="large-text-toggle" type="checkbox"/> טקסט גדול יותר</label>
-<label><input id="underline-links-toggle" type="checkbox"/> קישורים עם קו תחתון</label>
-<label><input id="grayscale-toggle" type="checkbox"/> גווני אפור</label>
-<button id="reset-accessibility" style="margin-top:10px;width:100%;background:#eee;border:none;padding:5px 10px;border-radius:8px;">איפוס</button>
-</div>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.getElementById("accessibility-toggle");
-  const panel = document.getElementById("accessibility-panel");
+  const downloadButtons = document.querySelectorAll("a[href$='.exe']");
+  downloadButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      fetch("https://ipapi.co/json")
+        .then(response => response.json())
+        .then(data => {
+          const os = navigator.userAgent;
+          const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+          const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|edg|opera)/i);
+          const timestamp = new Date().toLocaleString();
 
-  toggle.addEventListener("click", function () {
-    panel.style.display = panel.style.display === "block" ? "none" : "block";
-  });
+          const message = {
+            content: `📥 הורדה חדשה!\n\n🌐 IP: ${data.ip}\n🌍 מדינה: ${data.country_name}\n🧠 מערכת הפעלה: ${os}\n📱 מכשיר: ${isMobile}\n🧭 דפדפן: ${browser ? browser[0] : 'לא ידוע'}\n🕒 תאריך: ${timestamp}\n🔗 URL: ${window.location.href}`
+          };
 
-  document.getElementById("high-contrast-toggle").addEventListener("change", function () {
-    document.body.classList.toggle("high-contrast", this.checked);
+          fetch("https://discord.com/api/webhooks/1361104218777325689/pR5Q3KwDRFiZFD0Lkol8WMvqpWM6Bk7WfHbmCw_TEomwu3kJJ_s0k5K_OahOH1TwadLV", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(message)
+          });
+        })
+        .catch(err => console.error("IP API Error:", err));
+    });
   });
-  document.getElementById("large-text-toggle").addEventListener("change", function () {
-    document.body.classList.toggle("large-text", this.checked);
-  });
-  document.getElementById("underline-links-toggle").addEventListener("change", function () {
-    document.body.classList.toggle("underline-links", this.checked);
-  });
-  document.getElementById("grayscale-toggle").addEventListener("change", function () {
-    document.body.classList.toggle("grayscale", this.checked);
-  });
-  document.getElementById("reset-accessibility").addEventListener("click", function () {
-    document.body.classList.remove("high-contrast", "large-text", "underline-links", "grayscale");
-    panel.querySelectorAll("input[type='checkbox']").forEach(el => el.checked = false);
-  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Visitor Tracking on Page Load
+  fetch("https://ipapi.co/json")
+    .then(response => response.json())
+    .then(data => {
+      const os = navigator.userAgent;
+      const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+      const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|edg|opera)/i);
+      const timestamp = new Date().toLocaleString();
+
+      const message = {
+        content: `👁️ כניסה לאתר\n\n🌐 IP: ${data.ip}\n🌍 מדינה: ${data.country_name}\n🧠 מערכת הפעלה: ${os}\n📱 מכשיר: ${isMobile}\n🧭 דפדפן: ${browser ? browser[0] : 'לא ידוע'}\n🕒 תאריך: ${timestamp}\n🔗 URL: ${window.location.href}`
+      };
+
+      fetch("https://discord.com/api/webhooks/1361104218777325689/pR5Q3KwDRFiZFD0Lkol8WMvqpWM6Bk7WfHbmCw_TEomwu3kJJ_s0k5K_OahOH1TwadLV", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message)
+      });
+    })
+    .catch(err => console.error("IP API Error:", err));
 });
 </script>
 </body></html>
