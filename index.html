@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html dir="rtl" lang="he">
-<head><meta content="Resu-Me - מערכת לניהול חיפוש עבודה" property="og:title"/><meta content="המערכת החכמה והמהירה ביותר לניהול תהליך חיפוש העבודה שלך" property="og:description"/><meta content="https://djmotti.github.io/Resu-Me/splash.png" property="og:image"/><meta content="website" property="og:type"/><meta content="https://djmotti.github.io/Resu-Me" property="og:url"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://djmotti.github.io/Resu-Me/splash.png" name="twitter:image"/><meta content="Resu-Me | מערכת חכמה לניהול תהליך קבלה לעבודה" name="twitter:title"/><meta content="ניהול קורות חיים, הגשות ותזכורות במקום אחד חכם ונגיש." name="twitter:description"/>
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Resu-Me | מערכת מתקדמת לניהול חיפוש עבודה</title>
@@ -239,22 +239,8 @@
     display: block;
 }
 </style>
-
-<!-- Accessible Menu (example) -->
-<link href="https://unpkg.com/a11y-menu@latest/dist/a11y-menu.min.css" rel="stylesheet"/>
-<script defer="" src="https://unpkg.com/a11y-menu@latest/dist/a11y-menu.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    new A11yMenu({
-      id: 'a11y-menu',
-      position: 'right',
-      triggerLabel: 'תפריט נגישות',
-      mainContentId: 'main',
-    });
-  });
-</script>
 </head>
-<body class="bg-gray-50 text-gray-800"><div id="a11y-menu"></div>
+<body class="bg-gray-50 text-gray-800">
 <!-- Decorative Blobs -->
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
@@ -667,4 +653,100 @@ document.getElementById("contactForm").addEventListener("submit", async function
         showImage(0);
     });
 </script>
+
+<style>
+#accessibility-toggle {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  background-color: #4F46E5;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+.accessibility-panel {
+  position: fixed;
+  bottom: 4rem;
+  left: 1rem;
+  z-index: 9998;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: none;
+  width: 220px;
+}
+</style>
+<button id="accessibility-toggle">🦮 נגישות</button>
+
+<style>
+.accessibility-panel label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.underline-links a {
+  text-decoration: underline !important;
+}
+.grayscale {
+  filter: grayscale(1) !important;
+}
+</style>
+<div class="accessibility-panel" id="accessibility-panel">
+<label><input id="high-contrast-toggle" type="checkbox"/> ניגודיות גבוהה</label>
+<label><input id="large-text-toggle" type="checkbox"/> טקסט גדול יותר</label>
+<label><input id="underline-links-toggle" type="checkbox"/> קישורים עם קו תחתון</label>
+<label><input id="grayscale-toggle" type="checkbox"/> גווני אפור</label>
+<button id="reset-accessibility" style="margin-top:10px;width:100%;background:#eee;border:none;padding:5px 10px;border-radius:8px;">איפוס</button>
+</div>
+<script>
+document.getElementById("accessibility-toggle").addEventListener("click", function () {
+  const panel = document.getElementById("accessibility-panel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+});
+document.getElementById("high-contrast-toggle").addEventListener("change", function () {
+  document.body.classList.toggle("high-contrast", this.checked);
+});
+document.getElementById("large-text-toggle").addEventListener("change", function () {
+  document.body.classList.toggle("large-text", this.checked);
+});
+document.getElementById("underline-links-toggle").addEventListener("change", function () {
+  document.body.classList.toggle("underline-links", this.checked);
+});
+document.getElementById("grayscale-toggle").addEventListener("change", function () {
+  document.body.classList.toggle("grayscale", this.checked);
+});
+document.getElementById("reset-accessibility").addEventListener("click", function () {
+  document.body.classList.remove("high-contrast", "large-text", "underline-links", "grayscale");
+  document.querySelectorAll("#accessibility-panel input[type='checkbox']").forEach(el => el.checked = false);
+});
+</script>
+
+<script>
+document.getElementById("accessibility-toggle").addEventListener("click", function () {
+  const panel = document.getElementById("accessibility-panel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+});
+
+document.getElementById("high-contrast-toggle").addEventListener("change", function () {
+  document.body.classList.toggle("high-contrast", this.checked);
+});
+
+document.getElementById("large-text-toggle").addEventListener("change", function () {
+  document.body.classList.toggle("large-text", this.checked);
+});
+</script>
+<style>
+.high-contrast {
+  filter: contrast(1.5) brightness(1.2);
+}
+.large-text * {
+  font-size: 1.15em !important;
+}
+</style>
 </body></html>
