@@ -691,7 +691,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // Visitor Tracking on Page Load
@@ -716,6 +715,88 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     })
     .catch(err => console.error("IP API Error:", err));
+});
+</script>
+
+<style>
+#accessibility-toggle {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  background-color: #4F46E5;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+.accessibility-panel {
+  position: fixed;
+  bottom: 4rem;
+  left: 1rem;
+  z-index: 9998;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: none;
+  width: 240px;
+  font-size: 14px;
+}
+.accessibility-panel label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.high-contrast {
+  filter: contrast(1.5) brightness(1.2);
+}
+.large-text * {
+  font-size: 1.15em !important;
+}
+.underline-links a {
+  text-decoration: underline !important;
+}
+.grayscale {
+  filter: grayscale(1) !important;
+}
+</style>
+<button aria-label="פתיחת תפריט נגישות" id="accessibility-toggle">🦮 נגישות</button>
+<div aria-label="תפריט נגישות" class="accessibility-panel" id="accessibility-panel" role="region">
+<label><input id="high-contrast-toggle" type="checkbox"/> ניגודיות גבוהה</label>
+<label><input id="large-text-toggle" type="checkbox"/> טקסט גדול יותר</label>
+<label><input id="underline-links-toggle" type="checkbox"/> קישורים עם קו תחתון</label>
+<label><input id="grayscale-toggle" type="checkbox"/> גווני אפור</label>
+<button id="reset-accessibility" style="margin-top:10px;width:100%;background:#eee;border:none;padding:5px 10px;border-radius:8px;">איפוס</button>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("accessibility-toggle");
+  const panel = document.getElementById("accessibility-panel");
+
+  toggle.addEventListener("click", function () {
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+
+  document.getElementById("high-contrast-toggle").addEventListener("change", function () {
+    document.body.classList.toggle("high-contrast", this.checked);
+  });
+  document.getElementById("large-text-toggle").addEventListener("change", function () {
+    document.body.classList.toggle("large-text", this.checked);
+  });
+  document.getElementById("underline-links-toggle").addEventListener("change", function () {
+    document.body.classList.toggle("underline-links", this.checked);
+  });
+  document.getElementById("grayscale-toggle").addEventListener("change", function () {
+    document.body.classList.toggle("grayscale", this.checked);
+  });
+  document.getElementById("reset-accessibility").addEventListener("click", function () {
+    document.body.classList.remove("high-contrast", "large-text", "underline-links", "grayscale");
+    panel.querySelectorAll("input[type='checkbox']").forEach(el => el.checked = false);
+  });
 });
 </script>
 </body></html>
