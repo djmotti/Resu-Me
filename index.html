@@ -3,7 +3,10 @@
 <html dir="rtl" lang="he">
 <head><meta content="Resu-Me - מערכת חכמה לניהול חיפוש עבודה" property="og:title"/><meta content="כלי פשוט וחכם שמרכז את ההגשות, הקבצים והתזכורות במקום אחד" property="og:description"/><meta content="https://djmotti.github.io/Resu-Me/splash.png" property="og:image"/><meta content="https://djmotti.github.io/Resu-Me" property="og:url"/><meta content="summary_large_image" name="twitter:card"/><meta content="Resu-Me - מערכת חכמה לניהול חיפוש עבודה" name="twitter:title"/><meta content="ניהול קל ונוח של הגשות קורות חיים ועוד" name="twitter:description"/><meta content="https://djmotti.github.io/Resu-Me/splash.png" name="twitter:image"/>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#4F46E5">
 <title>Resu-Me | מערכת מתקדמת לניהול חיפוש עבודה</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
@@ -231,13 +234,249 @@
             background: #4F46E5;
         }
     
-.screenshot-item {
-    display: none;
-}
-
-.screenshot-item.active {
-    display: block;
-}
+        .screenshot-item {
+            display: none;
+        }
+        
+        .screenshot-item.active {
+            display: block;
+        }
+        
+        /* ================== התאמות למובייל ================== */
+        
+        /* תגית כללית למניעת זום באייפון */
+        .prevent-zoom {
+            touch-action: manipulation;
+        }
+        
+        /* כפתור מובייל קבוע לגלילה מעלה */
+        .mobile-fab-button {
+            display: none;
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #6366f1);
+            color: white;
+            font-size: 24px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        /* התאמות למסכי מובייל */
+        @media (max-width: 768px) {
+            /* הצגת כפתור הגלילה במובייל */
+            .mobile-fab-button {
+                display: block;
+            }
+            
+            /* התאמות לתפריט הניווט */
+            nav .flex.items-center.space-x-4 {
+                display: none;
+                position: absolute;
+                top: 64px;
+                right: 0;
+                left: 0;
+                flex-direction: column;
+                background-color: white;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                z-index: 50;
+            }
+            
+            .mobile-menu-open .flex.items-center.space-x-4 {
+                display: flex;
+            }
+            
+            nav .flex.items-center.space-x-4 a {
+                margin: 0.5rem 0;
+                padding: 0.5rem 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 20px;
+                cursor: pointer;
+            }
+            
+            .hamburger-menu span {
+                display: block;
+                height: 2px;
+                width: 100%;
+                background-color: #4F46E5;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu-open .hamburger-menu span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            
+            .mobile-menu-open .hamburger-menu span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-open .hamburger-menu span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            /* התאמות לסקשן הראשי */
+            .pt-28 {
+                padding-top: 6rem;
+            }
+            
+            /* התאמות למערכת הטאבים ותמונות המסך */
+            .screenshot-tabs {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .tab-button {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+                white-space: nowrap;
+            }
+            
+            .screenshot-card {
+                padding: 1rem;
+            }
+            
+            .screenshot-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .screenshot-info p {
+                font-size: 0.9rem;
+            }
+            
+            /* התאמות לכפתורי ניווט בתמונות */
+            .nav-button {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            /* התאמות לאזור השאלות הנפוצות */
+            .bg-white.rounded-xl.p-6 {
+                padding: 1rem;
+            }
+            
+            .bg-white.rounded-xl.p-6 h3 {
+                font-size: 1.1rem;
+            }
+            
+            /* התאמת כפתור הורדה למובייל */
+            .download-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            
+            .flex.flex-col.sm\\:flex-row {
+                width: 100%;
+            }
+            
+            /* מרווחים בסקשן הראשי */
+            .md\\:w-1\\/2 {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .flex.flex-col.sm\\:flex-row.justify-center.md\\:justify-start {
+                justify-content: center !important;
+            }
+            
+            /* תיקון לאזור הפיצ'רים */
+            .grid.md\\:grid-cols-2.lg\\:grid-cols-3.gap-8 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* התאמות לטופס יצירת קשר */
+            #contactForm input, 
+            #contactForm textarea {
+                font-size: 16px; /* למניעת זום אוטומטי באייפון */
+            }
+            
+            /* התאמת כפתור הנגישות */
+            #accessibility-toggle {
+                bottom: 5rem;
+                left: 0.5rem;
+                font-size: 12px;
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .accessibility-panel {
+                bottom: 8rem;
+                left: 0.5rem;
+                width: 200px;
+            }
+            
+            /* התאמות לפוטר */
+            footer .flex.flex-col.md\\:flex-row {
+                text-align: center;
+            }
+            
+            footer .flex.space-x-6 {
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            
+            /* תיקון מרווחים בהודעות שליחת הודעה */
+            #formSuccess {
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+        }
+        
+        /* התאמות ספציפיות לטלפונים קטנים */
+        @media (max-width: 480px) {
+            h1.text-4xl {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .text-xl {
+                font-size: 1rem;
+            }
+            
+            .py-4 {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+            
+            .px-8 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .feature-card {
+                padding: 1rem;
+            }
+            
+            .footer .text-xl {
+                font-size: 1rem;
+            }
+            
+            /* התאמת מרחקים בכותרות הסקשנים */
+            .text-center.mb-16 {
+                margin-bottom: 2rem;
+            }
+            
+            /* הקטנת גודל אייקונים בכרטיסי פיצ'רים */
+            .w-12.h-12 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -260,6 +499,7 @@
 <a class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" href="#faq">שאלות נפוצות</a>
 <a class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-200 mr-2" href="#download">הורד עכשיו</a>
 </div>
+<!-- כפתור המבורגר למובייל (יתווסף בג'אווהסקריפט) -->
 </div>
 </div>
 </nav>
@@ -383,7 +623,7 @@
 <div class="screenshot-slider">
 <div class="screenshot-container">
 <!-- תמונה 1 -->
-<div class="screenshot-item active">
+<div class="screenshot-item active" data-index="0">
 <div class="screenshot-card">
 <div class="screenshot-image">
 <img alt="Dashboard" src="1.png"/>
@@ -395,7 +635,7 @@
 </div>
 </div>
 <!-- תמונה 2 -->
-<div class="screenshot-item">
+<div class="screenshot-item" data-index="1">
 <div class="screenshot-card">
 <div class="screenshot-image">
 <img alt="Resume Management" src="3.png"/>
@@ -407,7 +647,7 @@
 </div>
 </div>
 <!-- תמונה 3 -->
-<div class="screenshot-item">
+<div class="screenshot-item" data-index="2">
 <div class="screenshot-card">
 <div class="screenshot-image">
 <img alt="Application Tracking" src="4.png"/>
@@ -419,7 +659,7 @@
 </div>
 </div>
 <!-- תמונה 4 -->
-<div class="screenshot-item">
+<div class="screenshot-item" data-index="3">
 <div class="screenshot-card">
 <div class="screenshot-image">
 <img alt="Analytics" src="6.png"/>
@@ -604,128 +844,12 @@ document.getElementById("contactForm").addEventListener("submit", async function
 </div>
 </div>
 </footer>
-<script></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabs = document.querySelectorAll('.tab-button');
-        const items = document.querySelectorAll('.screenshot-item');
-        const indicators = document.querySelectorAll('.indicator');
-        const prevButton = document.querySelector('.prev-button');
-        const nextButton = document.querySelector('.next-button');
-        let currentIndex = 0;
 
-        function showImage(index) {
-            items.forEach(item => item.classList.remove('active'));
-            tabs.forEach(tab => tab.classList.remove('active'));
-            indicators.forEach(dot => dot.classList.remove('active'));
+<!-- כפתור מובייל לגלילה למעלה -->
+<button class="mobile-fab-button" id="scrollToTopButton" style="display: none;">
+    <i class="fas fa-arrow-up"></i>
+</button>
 
-            items[index].classList.add('active');
-            tabs[index].classList.add('active');
-            indicators[index].classList.add('active');
-
-            currentIndex = index;
-        }
-
-        tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => showImage(index));
-        });
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => showImage(index));
-        });
-
-        prevButton.addEventListener('click', () => {
-            let newIndex = currentIndex - 1;
-            if (newIndex < 0) newIndex = items.length - 1;
-            showImage(newIndex);
-        });
-
-        nextButton.addEventListener('click', () => {
-            let newIndex = currentIndex + 1;
-            if (newIndex >= items.length) newIndex = 0;
-            showImage(newIndex);
-        });
-
-        setInterval(() => {
-            let newIndex = currentIndex + 1;
-            if (newIndex >= items.length) newIndex = 0;
-            showImage(newIndex);
-        }, 5000);
-
-        showImage(0);
-    });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
-    if (isMobile) {
-      document.body.classList.add("mobile-device");
-    }
-  });
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const downloadButtons = document.querySelectorAll("a[href$='.exe']");
-  downloadButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      fetch("https://ipapi.co/json")
-        .then(response => response.json())
-        .then(data => {
-          const os = navigator.userAgent;
-          const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
-          const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|edg|opera)/i);
-          const timestamp = new Date().toLocaleString();
-
-          const message = {
-            content: `📥 הורדה חדשה!\n\n🌐 IP: ${data.ip}\n🌍 מדינה: ${data.country_name}\n🧠 מערכת הפעלה: ${os}\n📱 מכשיר: ${isMobile}\n🧭 דפדפן: ${browser ? browser[0] : 'לא ידוע'}\n🕒 תאריך: ${timestamp}\n🔗 URL: ${window.location.href}`
-          };
-
-          fetch("https://discord.com/api/webhooks/1361104218777325689/pR5Q3KwDRFiZFD0Lkol8WMvqpWM6Bk7WfHbmCw_TEomwu3kJJ_s0k5K_OahOH1TwadLV", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(message)
-          });
-        })
-        .catch(err => console.error("IP API Error:", err));
-    });
-  });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const lastVisit = localStorage.getItem("lastVisit");
-  const now = Date.now();
-  const interval = 10 * 60 * 1000; // 10 minutes
-
-  if (!lastVisit || now - parseInt(lastVisit) > interval) {
-    localStorage.setItem("lastVisit", now);
-
-    fetch("https://ipapi.co/json")
-      .then(response => response.json())
-      .then(data => {
-        const os = navigator.userAgent;
-        const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
-        const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|edg|opera)/i);
-        const timestamp = new Date().toLocaleString();
-
-        const message = {
-          content: `👁️ כניסה ייחודית לאתר (עדכון כל 10 דק')\n\n🌐 IP: ${data.ip}\n🌍 מדינה: ${data.country_name}\n🧠 מערכת הפעלה: ${os}\n📱 מכשיר: ${isMobile}\n🧭 דפדפן: ${browser ? browser[0] : 'לא ידוע'}\n🕒 תאריך: ${timestamp}\n🔗 URL: ${window.location.href}`
-        };
-
-        fetch("https://discord.com/api/webhooks/1361104218777325689/pR5Q3KwDRFiZFD0Lkol8WMvqpWM6Bk7WfHbmCw_TEomwu3kJJ_s0k5K_OahOH1TwadLV", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(message)
-        });
-      })
-      .catch(err => console.error("IP API Error:", err));
-  }
-});
-</script>
 <style>
 #accessibility-toggle {
   position: fixed;
@@ -807,4 +931,252 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-</body></html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const lastVisit = localStorage.getItem("lastVisit");
+  const now = Date.now();
+  const interval = 10 * 60 * 1000; // 10 minutes
+
+  if (!lastVisit || now - parseInt(lastVisit) > interval) {
+    localStorage.setItem("lastVisit", now);
+
+    fetch("https://ipapi.co/json")
+      .then(response => response.json())
+      .then(data => {
+        const os = navigator.userAgent;
+        const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+        const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|edg|opera)/i);
+        const timestamp = new Date().toLocaleString();
+
+        const message = {
+          content: `👁️ כניסה ייחודית לאתר (עדכון כל 10 דק')\n\n🌐 IP: ${data.ip}\n🌍 מדינה: ${data.country_name}\n🧠 מערכת הפעלה: ${os}\n📱 מכשיר: ${isMobile}\n🧭 דפדפן: ${browser ? browser[0] : 'לא ידוע'}\n🕒 תאריך: ${timestamp}\n🔗 URL: ${window.location.href}`
+        };
+
+        fetch("https://discord.com/api/webhooks/1361104218777325689/pR5Q3KwDRFiZFD0Lkol8WMvqpWM6Bk7WfHbmCw_TEomwu3kJJ_s0k5K_OahOH1TwadLV", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(message)
+        });
+      })
+      .catch(err => console.error("IP API Error:", err));
+  }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const downloadButtons = document.querySelectorAll("a[href$='.exe']");
+  downloadButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      fetch("https://ipapi.co/json")
+        .then(response => response.json())
+        .then(data => {
+          const os = navigator.userAgent;
+          const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+          const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|edg|opera)/i);
+          const timestamp = new Date().toLocaleString();
+
+          const message = {
+            content: `📥 הורדה חדשה!\n\n🌐 IP: ${data.ip}\n🌍 מדינה: ${data.country_name}\n🧠 מערכת הפעלה: ${os}\n📱 מכשיר: ${isMobile}\n🧭 דפדפן: ${browser ? browser[0] : 'לא ידוע'}\n🕒 תאריך: ${timestamp}\n🔗 URL: ${window.location.href}`
+          };
+
+          fetch("https://discord.com/api/webhooks/1361104218777325689/pR5Q3KwDRFiZFD0Lkol8WMvqpWM6Bk7WfHbmCw_TEomwu3kJJ_s0k5K_OahOH1TwadLV", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(message)
+          });
+        })
+        .catch(err => console.error("IP API Error:", err));
+    });
+  });
+});
+</script>
+
+<!-- קוד JavaScript לתמיכת מובייל -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // יצירת כפתור התפריט למובייל
+        const navContainer = document.querySelector('nav .flex.justify-between');
+        const mobileMenuButton = document.createElement('div');
+        mobileMenuButton.className = 'hamburger-menu md:hidden';
+        mobileMenuButton.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        navContainer.appendChild(mobileMenuButton);
+        
+        // הוספת אירוע לחיצה לפתיחת התפריט
+        mobileMenuButton.addEventListener('click', function() {
+            document.body.classList.toggle('mobile-menu-open');
+        });
+        
+        // סגירת התפריט בלחיצה על קישור
+        const mobileMenuLinks = document.querySelectorAll('nav .flex.items-center.space-x-4 a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.body.classList.remove('mobile-menu-open');
+            });
+        });
+        
+        // סגירת התפריט בלחיצה מחוץ לתפריט
+        document.addEventListener('click', function(event) {
+            const isNavbarClick = event.target.closest('nav');
+            if (!isNavbarClick && document.body.classList.contains('mobile-menu-open')) {
+                document.body.classList.remove('mobile-menu-open');
+            }
+        });
+        
+        // התאמת גודל הטאבים אם הם גדולים מדי למסך
+        const tabsContainer = document.querySelector('.screenshot-tabs');
+        if (tabsContainer) {
+            const adjustTabsSize = function() {
+                const containerWidth = tabsContainer.offsetWidth;
+                const tabButtons = document.querySelectorAll('.tab-button');
+                const totalTabsWidth = Array.from(tabButtons).reduce((sum, tab) => sum + tab.offsetWidth, 0);
+                
+                if (totalTabsWidth > containerWidth) {
+                    tabButtons.forEach(tab => {
+                        tab.style.fontSize = '0.75rem';
+                        tab.style.padding = '0.3rem 0.6rem';
+                    });
+                }
+            };
+            
+            adjustTabsSize();
+            window.addEventListener('resize', adjustTabsSize);
+        }
+        
+        // מניעת זום אוטומטי בשדות טקסט באייפון
+        const formInputs = document.querySelectorAll('input, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                document.body.classList.add('prevent-zoom');
+            });
+            
+            input.addEventListener('blur', function() {
+                document.body.classList.remove('prevent-zoom');
+            });
+        });
+        
+        // כפתור גלילה למעלה
+        const scrollButton = document.getElementById('scrollToTopButton');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollButton.style.display = 'block';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        });
+        
+        scrollButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // טיפול ברגישות מגע בתמונות המסך
+        const screenshotSlider = document.querySelector('.screenshot-slider');
+        if (screenshotSlider) {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            screenshotSlider.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            screenshotSlider.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const currentIndex = parseInt(document.querySelector('.screenshot-item.active').dataset.index || 0);
+                const items = document.querySelectorAll('.screenshot-item');
+                let newIndex;
+                
+                if (touchEndX < touchStartX - 50) {
+                    // החלקה שמאלה
+                    newIndex = currentIndex + 1;
+                    if (newIndex >= items.length) newIndex = 0;
+                } else if (touchEndX > touchStartX + 50) {
+                    // החלקה ימינה
+                    newIndex = currentIndex - 1;
+                    if (newIndex < 0) newIndex = items.length - 1;
+                } else {
+                    return;
+                }
+                
+                // העברה לתמונה החדשה
+                const tabs = document.querySelectorAll('.tab-button');
+                const indicators = document.querySelectorAll('.indicator');
+                
+                items.forEach(item => item.classList.remove('active'));
+                tabs.forEach(tab => tab.classList.remove('active'));
+                indicators.forEach(dot => dot.classList.remove('active'));
+                
+                items[newIndex].classList.add('active');
+                tabs[newIndex].classList.add('active');
+                indicators[newIndex].classList.add('active');
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab-button');
+        const items = document.querySelectorAll('.screenshot-item');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            items.forEach(item => item.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            indicators.forEach(dot => dot.classList.remove('active'));
+
+            items[index].classList.add('active');
+            tabs[index].classList.add('active');
+            indicators[index].classList.add('active');
+
+            currentIndex = index;
+        }
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => showImage(index));
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => showImage(index));
+        });
+
+        prevButton.addEventListener('click', () => {
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = items.length - 1;
+            showImage(newIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= items.length) newIndex = 0;
+            showImage(newIndex);
+        });
+
+        setInterval(() => {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= items.length) newIndex = 0;
+            showImage(newIndex);
+        }, 5000);
+
+        showImage(0);
+    });
+</script>
+</body>
+</html>
