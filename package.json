@@ -1,0 +1,95 @@
+{
+  "name": "resu-me",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Resu‑Me desktop application for tracking and submitting resumes",
+  "author": "Moti Kalimi <moti.wardon@gmail.com>",
+  "homepage": "https://djmotti.github.io/Resu-Me/",
+  "main": "electron.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build:web": "tsc && vite build",
+    "generate:pdf": "node generate-guide-pdf.js",
+    "preview": "vite preview",
+    "electron:dev": "npm run build:web && electron .",
+    "pack": "npm run generate:pdf && npm run build:web && electron-builder --win nsis --x64 --publish=never",
+    "dist": "npm run pack",
+    "predeploy": "npm run build:web",
+    "deploy": "gh-pages -d dist",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "@tanstack/react-query": "^5.74.4",
+    "@tauri-apps/api": "^2.0.0",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
+    "discord.js": "^14.19.1",
+    "dotenv": "^16.5.0",
+    "framer-motion": "^12.7.4",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "lucide-react": "^0.501.0",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "react": "^18.2.0",
+    "react-big-calendar": "^1.18.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.55.0",
+    "react-hot-toast": "^2.5.2",
+    "react-loading-skeleton": "^3.5.0",
+    "react-router-dom": "^7.5.1",
+    "recharts": "^2.15.3",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.16",
+    "electron": "^24.1.2",
+    "electron-builder": "^24.13.3",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.4.31",
+    "puppeteer": "^24.6.1",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  },
+  "build": {
+    "asar": true,
+    "compression": "store",
+    "icon": "build/icon.ico",
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "differentialPackage": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "extraResources": [
+      {
+        "from": "הסבר על המערכת",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
+}
