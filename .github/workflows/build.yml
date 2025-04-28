@@ -2,9 +2,9 @@ name: "Build Cross-Platform"
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
@@ -34,7 +34,7 @@ jobs:
             libappindicator3-dev librsvg2-dev patchelf
 
       - name: Install app dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Web & Tauri App
         run: |
