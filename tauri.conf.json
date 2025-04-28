@@ -56,7 +56,10 @@
       "../הסבר על המערכת"
     ],
     "windows": {
-      "digestAlgorithm": "sha256"
+      "digestAlgorithm": "sha256",
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      }
     },
     "macOS": {
       "frameworks": [],
