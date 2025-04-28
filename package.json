@@ -9,7 +9,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
-    "build:web": "tsc && vite build",
+    "build:web": "vite build",
     "generate:pdf": "node generate-guide-pdf.js",
     "preview": "vite preview",
     "electron:dev": "npm run build:web && electron .",
