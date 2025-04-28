@@ -66,8 +66,7 @@
       "minimumSystemVersion": "10.13",
       "signingIdentity": null,
       "entitlements": null,
-      "providerShortName": null,
-      "copyright": "© 2025 Resu-Me. All rights reserved."
+      "providerShortName": null
     }
   },
   "plugins": {}
