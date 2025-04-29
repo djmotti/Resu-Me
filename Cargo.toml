@@ -13,31 +13,32 @@ name = "app_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2.5.1", features = [] }
+# התאמה לגרסה הזמינה ב-crates.io
+tauri-build = { version = "2.2.0", features = [] }
 
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
 
-# Core Tauri dependency, enable all APIs
+# Core Tauri dependency, עם כל ה־APIs
 tauri = { version = "2.5.1", features = ["api-all"] }
 
-# Moved dialog support into its own plugin
+# Dialog עבר ל־plugin
 tauri-plugin-dialog = "2.2.1"
 
-# Existing logging plugin (if still needed)
+# אם עדיין צריך רישום לוג
 tauri-plugin-log = "2.0.0-rc"
 
 [features]
 enable-custom-protocol = ["tauri/custom-protocol"]
 
-# Windows bundle settings
+# הגדרות bundle ל-Windows
 [package.metadata.tauri.bundle.windows]
 windows-subsystem = "windows"
 webview-install-mode = ["download"]
 
-# macOS bundle settings
+# הגדרות bundle ל-macOS
 [package.metadata.tauri.bundle.macOS]
 frameworks = []
 minimum-system-version = "10.13"
