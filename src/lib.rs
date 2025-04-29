@@ -1,26 +1,29 @@
-use tauri::{Builder, Manager};
+// קובץ src/lib.rs עבור טאורי גרסה 2.x
+#![allow(unused_imports)]
 
-#[cfg_attr(mobile, tauri::mobile_entry_point)]
+use tauri::{App, AppHandle, Manager};
+use serde::Serialize;
+
+#[cfg(desktop)]
+mod desktop;
+
+// יצירת האפליקציה עם טאורי 2.x
+#[tauri::module]
+fn init_app() -> App {
+    tauri::Builder::default()
+        .plugin(tauri_plugin_log::init())
+        .setup(|app| {
+            // לוגיקת אתחול כאן
+            Ok(())
+        })
+        .build()
+        .expect("Failed to build Tauri application")
+}
+
+// ניתן להגדיר עוד פונקציות ותכונות לפי הצורך
+
+// נדרש אם משתמשים בתכונת מצב מקומי של טאורי
+#[cfg(desktop)]
 pub fn run() {
-  let context = tauri::generate_context!();
-  
-  Builder::default()
-    .plugin(tauri_plugin_log::Builder::default().build())
-    .setup(|app| {
-      // קבלת הפניות לחלונות המוגדרים בקובץ התצורה
-      let splash = app.get_webview_window("splashscreen").unwrap();
-      let main = app.get_webview_window("main").unwrap();
-      
-      // לוגיקת הצגת החלון הראשי לאחר ההמתנה
-      std::thread::spawn(move || {
-        std::thread::sleep(std::time::Duration::from_secs(3));
-        splash.close().unwrap();
-        main.show().unwrap();
-      });
-      
-      Ok(())
-    })
-    .build(context)
-    .expect("error while building tauri application")
-    .run(|_, _| {})
+    init_app().run(|_, _| {});
 }
