@@ -3,34 +3,28 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react()],
-  base: './', 
+  plugins: [
+    react(),
+  ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      // מאפשר import "@/components/..." במקום "../../../components/..."
+      '@': path.resolve(__dirname, 'src'),
     },
   },
-  css: {
-    // Add support for importing CSS files
-    devSourcemap: true,
-  },
   build: {
+    // תיקיית היעד שייווצר ב-root של הפרויקט
     outDir: 'dist',
+    // מוחק קודם את כל הקבצים הישנים בתוך dist
     emptyOutDir: true,
-    sourcemap: true,
-    chunkSizeWarningLimit: 1600,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor': [
-            'react',
-            'react-dom',
-            'react-router-dom',
-            '@tanstack/react-query',
-            '@supabase/supabase-js'
-          ]
-        }
-      }
-    }
+    // לא יוצר sourcemaps בשלב CI (אופציונלי)
+    sourcemap: false,
+    // אם תרצה להתאים עוד הגדרות Rollup:
+    // rollupOptions: {
+    //   input: path.resolve(__dirname, 'index.html'),
+    // },
   },
+  // אם אתם מפרסמים ב-GitHub Pages מתחת לתיקיית /Resu-Me/,
+  // אפשר להוסיף גם base:
+  // base: '/Resu-Me/',
 });
