@@ -1,15 +1,52 @@
 {
-  "$schema": "https://schema.tauri.app/v2/config.json",
-  "identifier": "com.resu-me.app",
-  "productName": "resu-me",
-  "version": "0.1.0",
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build:web",
-    "devUrl": "http://localhost:5173",
-    "frontendDist": "dist"
+    "devPath": "http://localhost:5173",
+    "distDir": "../dist",
+    "withGlobalTauri": false
   },
-  "app": {
+  "package": {
+    "productName": "resu-me",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "dialog": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": ["nsis", "dmg", "app"],
+      "identifier": "com.resu-me.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/icon.ico",
+        "icons/icon.icns"
+      ],
+      "resources": [
+        "icons/splash.png",
+        "../הסבר על המערכת"
+      ],
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      },
+      "macOS": {
+        "frameworks": [],
+        "minimumSystemVersion": "10.13",
+        "signingIdentity": null,
+        "entitlements": null
+      }
+    },
     "security": {
       "csp": null
     },
@@ -41,30 +78,5 @@
         "center": true
       }
     ]
-  },
-  "bundle": {
-    "active": true,
-    "targets": ["nsis", "dmg", "app"],
-    "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/icon.ico",
-      "icons/icon.icns"
-    ],
-    "resources": [
-      "icons/splash.png",
-      "../הסבר על המערכת"
-    ],
-    "windows": {
-      "digestAlgorithm": "sha256"
-    },
-    "macOS": {
-      "frameworks": [],
-      "minimumSystemVersion": "10.13",
-      "signingIdentity": null,
-      "entitlements": null,
-      "providerShortName": null
-    }
-  },
-  "plugins": {}
+  }
 }
