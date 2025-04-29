@@ -24,7 +24,12 @@ tauri = { version = "2.5.1", features = [] }
 tauri-plugin-log = "2.0.0-rc"
 
 [features]
+# מאפיין custom-protocol
 enable-custom-protocol = ["tauri/custom-protocol"]
+# מאפיין חדש - desktop - שמשמש לזיהוי סביבות שולחניות
+desktop = []
+# הוספת מאפיין ברירת מחדל
+default = ["desktop"]
 
 # הגדרות לחבילה של Windows
 [package.metadata.tauri.bundle.windows]
