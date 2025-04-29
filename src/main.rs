@@ -2,6 +2,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    #[cfg(desktop)]
+    #[cfg(feature = "desktop")]
     app_lib::run();
 }
