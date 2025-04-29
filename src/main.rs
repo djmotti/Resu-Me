@@ -1,8 +1,7 @@
-#![cfg_attr(
-    all(not(debug_assertions), target_os = "windows"),
-    windows_subsystem = "windows"
-)]
+// קובץ src/main.rs עבור טאורי גרסה 2.x
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
+    #[cfg(desktop)]
     app_lib::run();
 }
