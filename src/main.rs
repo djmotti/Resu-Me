@@ -1,7 +1,7 @@
-// קובץ src/main.rs עבור טאורי גרסה 2.x
+// src/main.rs פשוט
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+// נקודת כניסה פשוטה
 fn main() {
-    #[cfg(feature = "desktop")]
     app_lib::run();
 }
