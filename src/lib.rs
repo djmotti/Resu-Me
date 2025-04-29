@@ -4,26 +4,26 @@
 use tauri::{App, AppHandle, Manager};
 use serde::Serialize;
 
-#[cfg(desktop)]
+#[cfg(feature = "desktop")]
 mod desktop;
 
-// יצירת האפליקציה עם טאורי 2.x
-#[tauri::module]
-fn init_app() -> App {
+// עדכון רישום הפלאגין בטאורי 2.x
+#[cfg_attr(mobile, tauri::android_app_lib)]
+pub fn init_app() -> tauri::App {
     tauri::Builder::default()
-        .plugin(tauri_plugin_log::init())
+        // עדכון רישום הפלאגין
+        .plugin(tauri_plugin_log::Builder::default().build())
         .setup(|app| {
             // לוגיקת אתחול כאן
             Ok(())
         })
-        .build()
+        // עדכון שיטת הבנייה בטאורי 2
+        .build(tauri::generate_context!())
         .expect("Failed to build Tauri application")
 }
 
-// ניתן להגדיר עוד פונקציות ותכונות לפי הצורך
-
-// נדרש אם משתמשים בתכונת מצב מקומי של טאורי
-#[cfg(desktop)]
+// נדרש אם משתמשים בתכונת מצב שולחני
+#[cfg(feature = "desktop")]
 pub fn run() {
     init_app().run(|_, _| {});
 }
