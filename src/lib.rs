@@ -1,21 +1,27 @@
-// קובץ src/lib.rs מפושט עבור טאורי גרסה 2.x
+// קובץ src/lib.rs עבור טאורי גרסה 1.x
 #![allow(unused_imports)]
 
 use tauri::{App, AppHandle, Manager};
 use serde::Serialize;
 
-// יצירת האפליקציה בצורה פשוטה יותר
+// פונקציה לאתחול האפליקציה
 pub fn init_app() -> tauri::App {
     tauri::Builder::default()
         .setup(|app| {
             // לוגיקת אתחול כאן
             Ok(())
         })
-        .build()
+        .build(tauri::generate_context!())
         .expect("Failed to build Tauri application")
 }
 
-// פונקציית הפעלה בסיסית
+// פונקציית הפעלה
 pub fn run() {
-    init_app().run(|_, _| {});
+    tauri::Builder::default()
+        .setup(|app| {
+            // לוגיקת אתחול כאן
+            Ok(())
+        })
+        .run(tauri::generate_context!())
+        .expect("Error while running tauri application");
 }
