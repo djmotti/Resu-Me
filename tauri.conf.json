@@ -7,11 +7,11 @@
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build:web",
     "devUrl": "http://localhost:5173",
-    "frontendDist": "../dist"
+    "frontendDist": "dist"
   },
   "app": {
-    "security": { 
-      "csp": null 
+    "security": {
+      "csp": null
     },
     "windows": [
       {
@@ -56,17 +56,15 @@
       "../הסבר על המערכת"
     ],
     "windows": {
-      "digestAlgorithm": "sha256",
-      "webviewInstallMode": {
-        "type": "downloadBootstrapper"
-      }
+      "digestAlgorithm": "sha256"
     },
     "macOS": {
       "frameworks": [],
       "minimumSystemVersion": "10.13",
       "signingIdentity": null,
       "entitlements": null,
-      "providerShortName": null
+      "providerShortName": null,
+      "copyright": "© 2025 Resu-Me. All rights reserved."
     }
   },
   "plugins": {}
